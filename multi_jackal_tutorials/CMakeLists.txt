@@ -9,6 +9,8 @@ roslaunch_add_file_check(launch/one_jackal.launch)
 roslaunch_add_file_check(launch/two_jackal.launch)
 roslaunch_add_file_check(launch/three_jackal.launch)
 roslaunch_add_file_check(launch/jackal_with_gps.launch)
+roslaunch_add_file_check(launch/single_jackal.launch)
+roslaunch_add_file_check(launch/multi_jackal.launch)
 
 install(
 	DIRECTORY launch rviz worlds

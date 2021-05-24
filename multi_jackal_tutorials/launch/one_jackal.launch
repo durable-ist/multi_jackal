@@ -17,7 +17,7 @@
   <arg name="config"    default="base"/>
   <arg name="config_id" default="0"/>
   <arg name="world"     default="empty.world"/>
-  <arg name="gui"       default="false"/>
+  <arg name="gui"       default="true"/>
   <arg name="rviz"      default="false"/>
 
   <!-- Start Gazebo. -->
