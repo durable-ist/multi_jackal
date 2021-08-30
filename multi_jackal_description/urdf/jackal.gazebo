@@ -31,8 +31,8 @@
       <frameId>$(arg namespace)/base_link</frameId>    
       <topicName>navsat/fix</topicName>
       <velocityTopicName>navsat/vel</velocityTopicName>
-      <referenceLatitude>-34.93</referenceLatitude>
-      <referenceLongitude>138.6</referenceLongitude>
+      <referenceLatitude>38.533617</referenceLatitude>
+      <referenceLongitude>-7.916481</referenceLongitude>
       <referenceHeading>0</referenceHeading>
       <referenceAltitude>0</referenceAltitude>
       <gaussianNoise>0.001 0.001 0.001</gaussianNoise>
