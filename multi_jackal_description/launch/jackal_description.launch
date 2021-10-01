@@ -5,7 +5,7 @@
      present in the urdf/configs folder. -->
 
 <launch>
-  <arg name="ns"        default="jackal"/>
+  <arg name="ns"        default="jackal0"/>
   <arg name="config"    default="base" />
   <arg name="config_id" default="0"/>
   <arg name="gps_rate"  default="1"/>

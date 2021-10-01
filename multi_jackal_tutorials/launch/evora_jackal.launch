@@ -19,6 +19,9 @@
   <arg name="world"     default="empty.world"/>
   <arg name="gui"       default="false"/>
   <arg name="rviz"      default="false"/>
+  <arg name="global_frame" default="$(arg ns)/odom"/>
+  <arg name="local_frame"  default="$(arg ns)/odom"/>
+  <arg name="use_global_tf"  default="false"/>
 
   <!-- Start Gazebo.
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -29,18 +32,50 @@
   
   <!-- Spawn the robot. -->
   <include file="$(find multi_jackal_base)/launch/jackal_base.launch">
-    <arg name="ns"            value="$(arg ns)"/>
-    <arg name="config"        value="$(arg config)"/>
-    <arg name="config_id"     value="$(arg config_id)"/>
-    <arg name="use_move_base" value="true"/>
+    <arg name="ns"             value="$(arg ns)"/>
+    <arg name="config"         value="$(arg config)"/>
+    <arg name="config_id"      value="$(arg config_id)"/>
+    <arg name="use_move_base"  value="true"/>
     <arg name="use_global_ekf" default="true"/>
+    <arg name="x"              value="-3"/>
+    <arg name="y"              value="-3"/>
+    <arg name="z"              value="-0.5"/>
+    <arg name="global_frame" value="$(arg ns)/odom"/>
+    <arg name="local_frame"  value="$(arg ns)/odom"/>
+    <arg name="use_global_tf"  value="false"/>
+    <!-- <arg name="global_frame"   value="map"/>
+    <arg name="local_frame"    value="map"/> -->
   </include>
-  
+
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
+        <remap from="cloud_in" to="$(arg ns)/velodyne_points"/>
+        <remap from="scan" to="$(arg ns)/front/scan"/>
+        <rosparam>
+
+            min_height: -0.1
+            max_height: 0.1
+
+            angle_min: -3.14 # -M_PI/2
+            angle_max: 3.14 # M_PI/2
+            angle_increment: 0.0087 # M_PI/360.0
+            scan_time: 0.1
+            range_min: 0.5
+            range_max: 30.0
+            use_inf: true
+
+            # Concurrency level, affects number of pointclouds queued for processing and number of threads used
+            # 0 : Detect number of cores
+            # 1 : Single threaded
+            # 2->inf : Parallelism level
+            concurrency_level: 0
+        </rosparam>
+    </node>
+
   <!-- View in RVIZ. -->
-  <group if="$(arg rviz)">
+  <!-- <group if="$(arg rviz)">
     <node name="rviz" pkg="rviz" type="rviz" ns="$(arg ns)" args="-d $(find multi_jackal_tutorials)/rviz/one_jackal.rviz" >
       <remap from="/move_base_simple/goal" to="/$(arg ns)/move_base_simple/goal"/>
     </node>
-  </group>
+  </group> -->
 
 </launch>

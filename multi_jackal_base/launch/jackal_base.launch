@@ -19,6 +19,8 @@
   <arg name="use_global_ekf" default="false"/> <!-- Uses GPS instead of a static 0,0,0 TF -->
 	<arg name="gps_rate"  default="1"/>
   <arg name="gps_drift" default="0.0001"/>
+  <arg name="global_frame" default="$(arg ns)/odom"/>
+  <arg name="local_frame"  default="$(arg ns)/odom"/>
   
   <!-- Launch the control portion of the Jackal robot. -->
   <include file="$(find multi_jackal_control)/launch/jackal_control.launch">
@@ -46,6 +48,8 @@
     <arg name="use_move_base"  value="$(arg use_move_base)"/>
     <arg name="use_global_tf"  value="$(arg use_global_tf)"/>
     <arg name="use_global_ekf" value="$(arg use_global_ekf)"/>
+    <arg name="global_frame" value="$(arg global_frame)"/>
+    <arg name="local_frame"  value="$(arg local_frame)"/>
   </include>
 
   <!-- Spawn the model into gazebo. -->
