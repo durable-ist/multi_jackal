@@ -33,11 +33,11 @@
   <group if="$(arg use_global_ekf)">
     <node ns="$(arg ns)" pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" output="screen">
       <param name="delay"                        value="5.0"/>
-      <param name="yaw_offset"                   value="1.5707963"/>
-      <param name="magnetic_declination_radians" value="0.13759"/>
+      <param name="yaw_offset"                   value="0"/>
+      <param name="magnetic_declination_radians" value="0"/>
       <param name="zero_altitude"                value="true"/>
       <param name="broadcast_utm_transform"      value="false"/>
-      <!--<param name="publish_filtered_gps"    value="true"/>
+      <!-- <param name="publish_filtered_gps"    value="true"/>
       <param name="wait_for_datum"          value="true"/>
       <rosparam param="datum">[49.9, 9.0, 0]</rosparam>-->
       <remap from="imu/data"          to="imu/data"/>
@@ -68,7 +68,7 @@
        handle rotation transform.
        (x y z yaw pitch roll frame_id child_frame_id period_in_ms) -->
   <group if="$(arg use_global_tf)">
-    <node pkg="tf" type="static_transform_publisher" name="static_map_odom_tf" ns="$(arg ns)"
+    <node pkg="tf" type="static_transform_publisher" name="static_map_odom_tf_jackal" ns="$(arg ns)"
         args="$(arg x) $(arg y) $(arg z) 0 0 0 map $(arg ns)/odom 100"/>
   </group>
   

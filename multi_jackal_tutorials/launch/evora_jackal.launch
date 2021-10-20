@@ -20,8 +20,9 @@
   <arg name="gui"       default="false"/>
   <arg name="rviz"      default="false"/>
   <arg name="global_frame" default="$(arg ns)/odom"/>
+  <!-- <arg name="global_frame"  default="map"/>  -->
   <arg name="local_frame"  default="$(arg ns)/odom"/>
-  <arg name="use_global_tf"  default="false"/>
+  <arg name="use_global_tf"  default="true"/>
 
   <!-- Start Gazebo.
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -36,13 +37,14 @@
     <arg name="config"         value="$(arg config)"/>
     <arg name="config_id"      value="$(arg config_id)"/>
     <arg name="use_move_base"  value="true"/>
-    <arg name="use_global_ekf" default="true"/>
+    <arg name="use_global_ekf" default="false"/>
     <arg name="x"              value="-3"/>
     <arg name="y"              value="-3"/>
     <arg name="z"              value="-0.5"/>
-    <arg name="global_frame" value="$(arg ns)/odom"/>
-    <arg name="local_frame"  value="$(arg ns)/odom"/>
-    <arg name="use_global_tf"  value="false"/>
+    <arg name="yaw"              value="0"/>
+    <arg name="global_frame" value="$(arg global_frame)"/>
+    <arg name="local_frame"  value="$(arg local_frame)"/>
+    <arg name="use_global_tf"  value="$(arg use_global_tf)"/>
     <!-- <arg name="global_frame"   value="map"/>
     <arg name="local_frame"    value="map"/> -->
   </include>
