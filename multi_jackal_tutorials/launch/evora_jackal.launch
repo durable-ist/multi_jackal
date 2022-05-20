@@ -23,6 +23,11 @@
   <!-- <arg name="global_frame"  default="map"/>  -->
   <arg name="local_frame"  default="$(arg ns)/odom"/>
   <arg name="use_global_tf"  default="true"/>
+  <arg name="use_waypoint_coordenator" default="false"/>
+
+  <group ns="$(arg ns)" if="$(arg use_waypoint_coordenator)">
+    <include file="$(find coordinates_waypoint_manager)/launch/coordinator.launch"/>
+  </group>
 
   <!-- Start Gazebo.
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
