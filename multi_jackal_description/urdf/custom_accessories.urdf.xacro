@@ -4,7 +4,11 @@
        must be a file in the config folder that sets the required variable to 1.
        The accessory can then be enabled by setting the 'config' argument in the
        launch files. -->
-  
+
+  <!-- Aruco markers. -->
+  <xacro:if value="$(optenv JACKAL_ARUCO 0)">
+    <xacro:include filename="accessories/aruco.urdf.xacro" />
+  </xacro:if> 
   
   <!-- Box with AprilTag markers on each face. -->
   <xacro:if value="$(optenv JACKAL_APRILTAG 0)">

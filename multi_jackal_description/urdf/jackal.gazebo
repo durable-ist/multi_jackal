@@ -3,7 +3,7 @@
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/$(arg namespace)</robotNamespace>
-      <legacyModeNS>true</legacyModeNS>
+    <legacyModeNS>true</legacyModeNS>
     </plugin>
   </gazebo>
 
@@ -32,7 +32,7 @@
       <topicName>navsat/fix</topicName>
       <velocityTopicName>navsat/vel</velocityTopicName>
       <referenceLatitude>38.540978</referenceLatitude>
-      <referenceLongitude>-7.961703</referenceLongitude>  
+      <referenceLongitude>-7.961703</referenceLongitude>
       <referenceHeading>0</referenceHeading>
       <referenceAltitude>0</referenceAltitude>
       <gaussianNoise>0.001 0.001 0.001</gaussianNoise>

@@ -5,7 +5,7 @@
      present in the urdf/configs folder. -->
 
 <launch>
-  <arg name="ns"        default="jackal0"/>
+  <arg name="ns"        default="jackal"/>
   <arg name="config"    default="base" />
   <arg name="config_id" default="0"/>
   <arg name="gps_rate"  default="1"/>
@@ -16,7 +16,7 @@
      the description into the parameter. -->
   <param name="/$(arg ns)/robot_description"
          command="$(find multi_jackal_description)/scripts/env_run
-                  $(find multi_jackal_description)/urdf/configs/$(arg config)
+                  $(find multi_jackal_description)/urdf/configs/aruco
                   $(find xacro)/xacro '$(find multi_jackal_description)/urdf/jackal.urdf.xacro' 
                       '--inorder' 'namespace:=$(arg ns)' 'config_id:=$(arg config_id)'
                       'gps_rate:=$(arg gps_rate)' 'gps_drift:=$(arg gps_drift)'" />
